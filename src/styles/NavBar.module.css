@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Grand+Hotel&display=swap');
+
+.picagramLogo {
+    text-decoration: none;
+    display: flex;
+    font-family: "Grand Hotel",cursive;
+    font-weight: 500;
+    font-size: 2rem;
+    cursor: pointer;
+
+    i {
+        color: #cfced3;
+        font-size: 2rem;
+        padding: 5px;
+        padding-right: 15px;
+        vertical-align: middle;
+      }
+}
+.picagramLogo:hover {
+    background-color: #000;
+}
+
+.darkNavbar {
+    background-color: #000 !important;
+}
+
+.fullWidthNav {
+    width: 100%;
+  }
+
+.NavLink {
+    padding: 5px;
+    text-decoration: none;
+}
+
+.Active i {
+    color: #df8600;
+}

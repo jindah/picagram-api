@@ -1,0 +1,48 @@
+.App {
+    font-family: "DM Sans", sans-serif;
+    background-color: #000;
+    min-height: 100vh;
+  }
+  
+  * {
+    box-sizing: border-box;
+  }
+  
+  a {
+    color: #555555;
+    transition: color ease-in-out 0.3s;
+  }
+  
+  a:hover {
+    text-decoration: none;
+    background-color: #202020;
+  }
+  
+  a:hover i {
+    transition: color ease-in-out 0.3s;
+  }
+  
+  i {
+    color: #cfced3;
+    font-size: 1.4rem;
+    padding: 5px;
+    padding-right: 15px;
+    vertical-align: middle;
+  }
+  
+  i:hover {
+    cursor: pointer;
+    transition: color ease-in-out 0.3s;
+    color: #df8600;
+  }
+
+.NavCol {
+    height: 100%;
+}
+
+.MidCol {
+  color: #cfced3;
+  border: 1px solid #202020;
+  height: 100vh;
+  padding-top: 20px;
+}
