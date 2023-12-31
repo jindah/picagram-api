@@ -5,6 +5,7 @@
     font-weight: 500;
     font-size: 2rem;
     cursor: pointer;
+    padding-bottom: 10px;
 
     i {
         color: #cfced3;
@@ -38,4 +39,5 @@
 a:hover {
     text-decoration: none;
     background-color: #202020;
+    border-radius: 10px;
   }
