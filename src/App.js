@@ -5,16 +5,17 @@ import styles from './App.module.css'
 import {Route, Switch} from 'react-router-dom'
 import './api/axiosDefaults'
 import SignUpForm from './pages/auth/SignUpForm';
+import SignInForm from './pages/auth/SignInForm';
 
 function App() {
   return (
     <Container className={styles.App} fluid>
       <Row>
-        <Col xs={12} lg={3} className={styles.NavCol}><NavBar /></Col>
-        <Col xs={12} lg={6} className={styles.MidCol}>
+        <Col xs={12} lg={2} className={styles.NavCol}><NavBar /></Col>
+        <Col xs={12} lg={7} className={`justify-content-center align-items-center ${styles.MidCol}`}>
           <Switch>
             <Route exact path="/" render={() => <h1>Home page</h1>} />
-            <Route exact path="/login" render={() => <h1>Sign in</h1>} />
+            <Route exact path="/login" render={() => <SignInForm />} />
             <Route exact path="/signup" render={() => <SignUpForm />} />
           </Switch>
         </Col>

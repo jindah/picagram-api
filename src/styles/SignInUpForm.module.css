@@ -1,0 +1,43 @@
+.Container {
+  width: 100%;
+  padding: 0;
+}
+
+.Input {
+  background: #000;
+  border: 1px solid #202020;
+  box-sizing: border-box;
+  border-radius: 100px;
+  color: #8a8a8a;
+  text-align: center;
+  padding: 10px;
+  margin: 10px;
+}
+
+.Input::placeholder {
+  color: #8a8a8a;
+}
+ 
+.Header {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 19px;
+  text-align: center;
+  letter-spacing: 0.2em;
+  color: #df8600;
+}
+  
+.Link {
+  text-decoration: none;
+  text-align: center;
+  display: block;
+}
+
+.Link:hover {
+  background-color: #000;
+}
+  
+.Link span {
+  color: #ff9254;
+}

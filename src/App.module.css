@@ -1,48 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Grand+Hotel&family=Roboto:wght@400&display=swap');
+
+
 .App {
-    font-family: "DM Sans", sans-serif;
-    background-color: #000;
-    min-height: 100vh;
-  }
+  font-family: "Roboto", sans-serif;
+  background-color: #000;
+  min-height: 100vh;
+}
   
-  * {
-    box-sizing: border-box;
-  }
+* {
+  box-sizing: border-box;
+}
   
-  a {
-    color: #555555;
-    transition: color ease-in-out 0.3s;
-  }
+a {
+  color: #555555;
+  transition: color ease-in-out 0.3s;
+}
   
-  a:hover {
-    text-decoration: none;
-    background-color: #202020;
-  }
+a:hover {
+  text-decoration: none;
+}
   
-  a:hover i {
-    transition: color ease-in-out 0.3s;
-  }
+a:hover i {
+  transition: color ease-in-out 0.3s;
+}
   
-  i {
-    color: #cfced3;
-    font-size: 1.4rem;
-    padding: 5px;
-    padding-right: 15px;
-    vertical-align: middle;
-  }
+i {
+  color: #cfced3;
+  font-size: 1.4rem;
+  padding: 5px;
+  padding-right: 15px;
+  vertical-align: middle;
+}
   
-  i:hover {
-    cursor: pointer;
-    transition: color ease-in-out 0.3s;
-    color: #df8600;
-  }
+i:hover {
+  cursor: pointer;
+  transition: color ease-in-out 0.3s;
+  color: #df8600;
+}
 
 .NavCol {
-    height: 100%;
+  height: 100%;
+  padding-top: 30px;
 }
 
 .MidCol {
   color: #cfced3;
-  border: 1px solid #202020;
+  border-left: 1px solid #202020;
   height: 100vh;
-  padding-top: 20px;
+  padding-top: 50px;
 }
