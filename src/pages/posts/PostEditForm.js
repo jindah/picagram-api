@@ -8,18 +8,14 @@ import Container from "react-bootstrap/Container";
 import Alert from "react-bootstrap/Alert";
 import Image from "react-bootstrap/Image";
 
-import Asset from "../../components/Asset";
-
-import Upload from "../../assets/upload.png";
-
 import styles from "../../styles/PostCreateEditForm.module.css";
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
 
-import { useHistory } from "react-router";
+import { useHistory, useParams } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
 
-function PostCreateForm() {
+function PostEditForm() {
   const [errors, setErrors] = useState({});
 
   const [postData, setPostData] = useState({
@@ -30,6 +26,22 @@ function PostCreateForm() {
 
   const imageInput = useRef(null);
   const history = useHistory();
+  const { id } = useParams();
+
+  useEffect(() => {
+    const handleMount = async () => {
+      try {
+        const { data } = await axiosReq.get(`/posts/${id}/`);
+        const { content, image, is_owner } = data;
+
+        is_owner ? setPostData({ content, image }) : history.push("/");
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    handleMount();
+  }, [history, id]);
 
   const handleChange = (event) => {
     setPostData({
@@ -53,18 +65,21 @@ function PostCreateForm() {
     const formData = new FormData();
 
     formData.append("content", content);
-    formData.append("image", imageInput.current.files[0]);
 
-    try {
-      const { data } = await axiosReq.post("/posts/", formData);
-      history.push(`/posts/${data.id}`);
-    } catch (err) {
-      console.log(err);
-      if (err.response?.status !== 401) {
-        setErrors(err.response?.data);
+    if (imageInput?.current?.files[0]) {
+        formData.append("image", imageInput.current.files[0]);
       }
-    }
-  };
+
+      try {
+        await axiosReq.put(`/posts/${id}/`, formData);
+        history.push(`/posts/${id}`);
+      } catch (err) {
+        console.log(err);
+        if (err.response?.status !== 401) {
+          setErrors(err.response?.data);
+        }
+      }
+    };
 
   const textFields = (
     <div className="text-center">
@@ -90,7 +105,7 @@ function PostCreateForm() {
         onClick={() => history.goBack()}
       ><i className="fa-solid fa-xmark"></i> Cancel</Button>
       <Button className={`${btnStyles.Button}`} type="submit">
-      <i className="fa-solid fa-circle-plus"></i>Share
+      <i className="fa-solid fa-circle-plus"></i>Save
       </Button>
     </div>
   );
@@ -149,11 +164,9 @@ function PostCreateForm() {
         </Container>
       </Col>
     </Row>
-
-    {/* Place textFields container here */}
     <Container className={appStyles.Content}>{textFields}</Container>
   </Form>
 );
 }
 
-export default PostCreateForm;
+export default PostEditForm;

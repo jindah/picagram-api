@@ -1,10 +1,11 @@
 import React from "react";
 import styles from "../../styles/Post.module.css";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
-import { Card, Media, OverlayTrigger, Tooltip } from "react-bootstrap";
+import { Card, OverlayTrigger, Tooltip } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Avatar from "../../components/Avatar";
 import { axiosRes } from "../../api/axiosDefaults";
+import { MoreDropdown } from "../../components/MoreDropdown";
 
 const Post = (props) => {
   const {
@@ -19,7 +20,6 @@ const Post = (props) => {
     content,
     image,
     updated_at,
-    postPage,
     setPosts,
   } = props;
 
@@ -61,18 +61,18 @@ const Post = (props) => {
   return (
     <Card className={styles.Post}>
         <Card.Body>
-        <Media className="align-items-center">
-            <Link to={`/profiles/${profile_id}`} className={`d-flex align-items-center ${styles.ProfileDate}`}>
+        <div className={`d-flex align-items-center justify-content-between ${styles.ProfileDate}`}>
+            <Link to={`/profiles/${profile_id}`} className="d-flex align-items-center">
             <Avatar src={profile_image} height={30} />
-            <span>{owner} • {updated_at} • {is_owner && postPage && "..."}</span>
+            <span>{owner} • {updated_at}</span>
             </Link>
-        </Media>
+            {is_owner && <MoreDropdown />}
+        </div>
         </Card.Body>
       <Link to={`/posts/${id}`}>
         <Card.Img src={image} alt={title} />
       </Link>
       <Card.Body>
-        {content && <Card.Text className={styles.PostBar}>{content}</Card.Text>}
         <div className={styles.PostBar}>
           {is_owner ? (
             <OverlayTrigger
@@ -103,6 +103,7 @@ const Post = (props) => {
           </Link>
           {comments_count}
         </div>
+        {content && <Card.Text className={styles.PostBar}>{content}</Card.Text>}
       </Card.Body>
     </Card>
   );

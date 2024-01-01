@@ -4,8 +4,17 @@
     padding: 0px;
   }
   
-  .Absolute {
+.Absolute {
     position: absolute;
     right: 0;
     z-index: 99;
-  }
+}
+
+.customModal {
+    background-color: #333;
+}
+  
+.customModal .modalContent {
+    background-color: #333;
+    color: #fff;
+}
