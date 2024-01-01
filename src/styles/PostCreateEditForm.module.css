@@ -1,3 +1,9 @@
 .Container {
-    min-height: 343px;
+    min-height: 150px;
   }
+
+.hiddenInputButton {
+  opacity: 0;
+  position: absolute;
+  top: -9999px;
+}

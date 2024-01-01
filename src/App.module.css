@@ -6,6 +6,18 @@
   background-color: #000;
   min-height: 100vh;
 }
+
+.Content {
+  padding: 10px;
+  border-radius: 2px;
+  border: 1px solid #202020;
+}
+
+.Image {
+  max-height: 40vh;
+  max-width: 100%;
+  object-fit: contain;
+}
   
 * {
   box-sizing: border-box;
