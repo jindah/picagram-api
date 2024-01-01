@@ -6,7 +6,7 @@
     padding: 10px;
     text-align: center;
 }
-  
+
 .Post figure,
   h5 {
     margin: 0 0;
@@ -22,4 +22,17 @@
 
 .PostBar {
     color: #858585;
+}
+
+.ProfileDate {
+    color: #4e4e4e;
+    font-size: 0.9rem;
+}
+
+.ProfileDate:hover {
+    background-color: #000;
+}
+
+.Comments:hover {
+    background-color: #000;
 }

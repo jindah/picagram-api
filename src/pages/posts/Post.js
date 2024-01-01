@@ -60,18 +60,14 @@ const Post = (props) => {
 
   return (
     <Card className={styles.Post}>
-      <Card.Body>
-        <Media className="align-items-center justify-content-between">
-          <Link to={`/profiles/${profile_id}`}>
+        <Card.Body>
+        <Media className="align-items-center">
+            <Link to={`/profiles/${profile_id}`} className={`d-flex align-items-center ${styles.ProfileDate}`}>
             <Avatar src={profile_image} height={30} />
-            {owner}
-          </Link>
-          <div className="d-flex align-items-center">
-            <span>{updated_at}</span>
-            {is_owner && postPage && "..."}
-          </div>
+            <span>{owner} • {updated_at} • {is_owner && postPage && "..."}</span>
+            </Link>
         </Media>
-      </Card.Body>
+        </Card.Body>
       <Link to={`/posts/${id}`}>
         <Card.Img src={image} alt={title} />
       </Link>
@@ -103,7 +99,7 @@ const Post = (props) => {
           )}
           {likes_count}
           <Link to={`/posts/${id}`}>
-            <i className="far fa-comments" />
+            <i className={`far fa-comments ${styles.Comments}`} />
           </Link>
           {comments_count}
         </div>
