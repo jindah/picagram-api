@@ -41,3 +41,9 @@
 .Link span {
   color: #ff9254;
 }
+
+.Centered {
+  display: block !important;
+  margin: 0 auto !important;
+  text-align: center !important;
+}
