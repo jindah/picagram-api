@@ -23,6 +23,7 @@ function PostCreateForm() {
   const [errors, setErrors] = useState({});
 
   const [postData, setPostData] = useState({
+    title: "",
     content: "",
     image: "",
   });
@@ -88,9 +89,9 @@ function PostCreateForm() {
       <Button
         className={`${btnStyles.Button}`}
         onClick={() => history.goBack()}
-      ><i class="fa-solid fa-xmark"></i> Cancel</Button>
+      ><i className="fa-solid fa-xmark"></i> Cancel</Button>
       <Button className={`${btnStyles.Button}`} type="submit">
-      <i class="fa-solid fa-circle-plus"></i>Share
+      <i className="fa-solid fa-circle-plus"></i>Share
       </Button>
     </div>
   );

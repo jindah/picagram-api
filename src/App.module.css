@@ -13,6 +13,14 @@
   border: 1px solid #202020;
 }
 
+.ContentBlack {
+  background-color: #000;
+  padding: 10px;
+  border-radius: 2px;
+  border: 1px solid #202020;
+  color: #707070;
+}
+
 .Image {
   max-height: 40vh;
   max-width: 100%;
@@ -25,11 +33,12 @@
   
 a {
   color: #555555;
-  transition: color ease-in-out 0.3s;
+  text-decoration: none;
 }
   
 a:hover {
   text-decoration: none;
+  transition: color ease-in-out 0.3s;
 }
   
 a:hover i {
@@ -39,8 +48,7 @@ a:hover i {
 i {
   color: #cfced3;
   font-size: 1.4rem;
-  padding: 5px;
-  padding-right: 15px;
+  padding: 10px;
   vertical-align: middle;
 }
   
@@ -48,6 +56,7 @@ i:hover {
   cursor: pointer;
   transition: color ease-in-out 0.3s;
   color: #df8600;
+  background-color: none;
 }
 
 .NavCol {
