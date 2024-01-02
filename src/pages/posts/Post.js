@@ -5,7 +5,7 @@ import { Card, OverlayTrigger, Tooltip } from "react-bootstrap";
 import { Link, useHistory, useLocation } from "react-router-dom";
 import Avatar from "../../components/Avatar";
 import { axiosRes } from "../../api/axiosDefaults";
-import { MoreDropdown } from "../../components/MoreDropdown";
+import { MoreModal } from "../../components/MoreModal";
 
 const Post = (props) => {
   const {
@@ -92,7 +92,7 @@ const Post = (props) => {
             <Avatar src={profile_image} height={30} />
             <span>{owner} • {updated_at}</span>
             </Link>
-            {is_owner && <MoreDropdown handleEdit={handleEdit} handleDelete={handleDelete}/>}
+            {is_owner && <MoreModal handleEdit={handleEdit} handleDelete={handleDelete}/>}
         </div>
         </Card.Body>
       <Link to={`/posts/${id}`}>

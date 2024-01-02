@@ -59,9 +59,9 @@ function PostPage() {
               <Comment key={comment.id} {...comment} />
             ))
           ) : currentUser ? (
-            <span>No comments yet, be the first to comment!</span>
+            <span> </span>
           ) : (
-            <span>No comments. Login to comment!</span>
+            <span>No comments yet. Login to comment!</span>
           )}
         </Container>
       </Col>

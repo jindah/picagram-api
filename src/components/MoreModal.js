@@ -14,7 +14,7 @@ const ThreeDots = ({ onClick }) => (
   />
 );
 
-export const MoreDropdown = ({ handleEdit, handleDelete }) => {
+export const MoreModal = ({ handleEdit, handleDelete }) => {
   const [smShow, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
