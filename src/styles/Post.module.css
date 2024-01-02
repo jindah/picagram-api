@@ -22,6 +22,8 @@
 
 .PostBar {
     color: #858585;
+    display: flex;
+    align-items: flex-start;
 }
 
 .ProfileDate {
@@ -35,4 +37,9 @@
 
 .Comments:hover {
     background-color: #000;
+}
+
+.boldText {
+    font-weight: bold;
+    margin-right: 5px;
 }

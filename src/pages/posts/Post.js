@@ -2,7 +2,7 @@ import React from "react";
 import styles from "../../styles/Post.module.css";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { Card, OverlayTrigger, Tooltip } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useHistory, useLocation } from "react-router-dom";
 import Avatar from "../../components/Avatar";
 import { axiosRes } from "../../api/axiosDefaults";
 import { MoreDropdown } from "../../components/MoreDropdown";
@@ -25,6 +25,31 @@ const Post = (props) => {
 
   const currentUser = useCurrentUser();
   const is_owner = currentUser?.username === owner;
+  const history = useHistory();
+
+  const location = useLocation();
+  // Check if the user is on the feed page or home page
+  const isFeedPage = location.pathname.includes('/feed');
+  const isHomePage = location.pathname === '/';
+
+  const handleEdit = () => {
+    history.push(`/posts/${id}/edit`);
+  };
+
+  const handleDelete = async () => {
+    // Display a confirmation dialog
+    const isConfirmed = window.confirm('Are you sure you want to delete this post?');
+
+    if (isConfirmed) {
+      try {
+        await axiosRes.delete(`/posts/${id}/`);
+        history.push('/');
+      } catch (err) {
+        // Handle error
+        console.error(err);
+      }
+    }
+  };
 
   const handleLike = async () => {
     try {
@@ -66,7 +91,7 @@ const Post = (props) => {
             <Avatar src={profile_image} height={30} />
             <span>{owner} • {updated_at}</span>
             </Link>
-            {is_owner && <MoreDropdown />}
+            {is_owner && <MoreDropdown handleEdit={handleEdit} handleDelete={handleDelete}/>}
         </div>
         </Card.Body>
       <Link to={`/posts/${id}`}>
@@ -97,13 +122,14 @@ const Post = (props) => {
               <i className="far fa-heart" />
             </OverlayTrigger>
           )}
-          {likes_count}
           <Link to={`/posts/${id}`}>
             <i className={`far fa-comments ${styles.Comments}`} />
           </Link>
-          {comments_count}
+          
         </div>
-        {content && <Card.Text className={styles.PostBar}>{content}</Card.Text>}
+        <Card.Text className={styles.PostBar}>{likes_count === 1 ? `${likes_count} like` : `${likes_count} likes`}</Card.Text>
+        {content && <Card.Text className={styles.PostBar}><span className={styles.boldText}>{owner}</span>{content}</Card.Text>}
+        {isFeedPage || isHomePage ? ( <Link to={`/posts/${id}`}><Card.Text className={styles.PostBar}>{comments_count === 0 ? `Be the first to comment...` : `See all ${comments_count} comments...`}</Card.Text></Link>) : null}
       </Card.Body>
     </Card>
   );

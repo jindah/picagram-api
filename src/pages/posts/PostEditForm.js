@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
@@ -118,8 +118,6 @@ function PostEditForm() {
             className={`${styles.Container} d-flex flex-column justify-content-center`}
           >
             <Form.Group className="text-center">
-              {image ? (
-                <>
                   <figure>
                     <Image
                         className={appStyles.Image}
@@ -133,21 +131,8 @@ function PostEditForm() {
                       htmlFor="image-upload"
                     >
                       Change the image
-                    </Form.Label>
+                      </Form.Label>
                   </div>
-                </>
-              ) : (
-                <Form.Label
-                  className="d-flex justify-content-center"
-                  htmlFor="image-upload"
-                >
-                  <Asset
-                    src={Upload}
-                    message="Click or tap to upload an image"
-                  />
-                </Form.Label>
-              )}
-
               <Form.File
                 id="image-upload"
                 accept="image/*"
@@ -161,12 +146,12 @@ function PostEditForm() {
                 {message}
               </Alert>
             ))}
-        </Container>
-      </Col>
-    </Row>
-    <Container className={appStyles.Content}>{textFields}</Container>
-  </Form>
-);
+          </Container>
+        </Col>
+          <Container className={appStyles.Content}>{textFields}</Container>
+      </Row>
+    </Form>
+  );
 }
 
 export default PostEditForm;

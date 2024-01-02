@@ -149,8 +149,6 @@ function PostCreateForm() {
         </Container>
       </Col>
     </Row>
-
-    {/* Place textFields container here */}
     <Container className={appStyles.Content}>{textFields}</Container>
   </Form>
 );

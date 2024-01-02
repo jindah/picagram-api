@@ -1,9 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Grand+Hotel&family=Roboto:wght@400&display=swap');
 
+body, html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
 
 .App {
   font-family: "Roboto", sans-serif;
   background-color: #000;
+  min-height: 100%;
 }
 
 .Content {
@@ -59,13 +65,23 @@ i:hover {
 }
 
 .NavCol {
-  height: 100%;
   padding-top: 30px;
 }
 
 .MidCol {
   color: #cfced3;
   border-left: 1px solid #202020;
-  height: 100vh;
+  min-height: 100%;
   padding-top: 50px;
+  min-height: 100vh;
+}
+
+@media only screen and (max-width: 767px) {
+  .NavCol {
+    padding-top: 10px;
+  }
+
+  .MidCol {
+    padding-top: 10px; /* Adjust as needed for mobile */
+  }
 }

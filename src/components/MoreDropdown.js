@@ -2,20 +2,20 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
+import { ButtonGroup } from 'react-bootstrap';
 
-const ThreeDots = React.forwardRef(({ onClick }, ref) => (
+const ThreeDots = ({ onClick }) => (
   <i
     className="fa-solid fa-ellipsis"
-    ref={ref}
     onClick={(e) => {
       e.preventDefault();
       onClick(e);
     }}
   />
-));
+);
 
 export const MoreDropdown = ({ handleEdit, handleDelete }) => {
-  const [show, setShow] = useState(false);
+  const [smShow, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -24,28 +24,31 @@ export const MoreDropdown = ({ handleEdit, handleDelete }) => {
     <>
       <ThreeDots onClick={handleShow} />
 
-      <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Do you want to...</Modal.Title>
-        </Modal.Header>
-        <Modal.Body className="bg-dark">
+      <Modal size="sm" show={smShow}  onHide={handleClose}>
+        <Modal.Body>
           <div className="text-center">
-            <Button
-                variant="outline-success"
-                size="sm"
-                onClick={handleEdit}
-                aria-label="edit"
-            >
-              <i className="fas fa-edit" /> Edit
-            </Button>{'  '}{'  '}
-            <Button
-              variant="outline-danger"
-              size="sm"
-              onClick={handleDelete}
-              aria-label="delete"
-            >
-              <i className="fas fa-trash-alt" /> Delete
-            </Button>
+            <ButtonGroup>
+              <Button
+                  variant="dark"
+                  onClick={handleEdit}
+                  aria-label="edit"
+              >
+                <i className="fas fa-edit" /> Edit
+              </Button>
+              <Button
+                variant="dark"
+                onClick={handleDelete}
+                aria-label="delete"
+              >
+                <i className="fas fa-trash-alt" /> Delete
+              </Button>
+              <Button
+                variant="dark"
+                onClick={handleClose}
+              >
+              <i className="fa-solid fa-xmark"></i> Close
+              </Button>
+            </ButtonGroup>
           </div>
         </Modal.Body>
       </Modal>
