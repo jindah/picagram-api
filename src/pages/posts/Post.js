@@ -88,7 +88,7 @@ const Post = (props) => {
     <Card className={styles.Post}>
         <Card.Body>
         <div className={`d-flex align-items-center justify-content-between ${styles.ProfileDate}`}>
-            <Link to={`/profiles/${profile_id}`} className="d-flex align-items-center">
+            <Link to={`/profiles/${profile_id}`} className={`d-flex align-items-center ${styles.ProfileDateHover}`}>
             <Avatar src={profile_image} height={30} />
             <span>{owner} • {updated_at}</span>
             </Link>
@@ -127,7 +127,7 @@ const Post = (props) => {
             {isPostPage ? (
               <OverlayTrigger
                 placement="top"
-                overlay={<Tooltip>Comment down below!</Tooltip>}
+                overlay={<Tooltip>{currentUser ? 'Comment down below!' : 'Log in to comment!'}</Tooltip>}
               >
                 <i className={`far fa-comments ${styles.Comments}`} />
               </OverlayTrigger>
