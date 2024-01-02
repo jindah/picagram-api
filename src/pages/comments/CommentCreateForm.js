@@ -45,7 +45,7 @@ function CommentCreateForm(props) {
     <Form className="mt-2" onSubmit={handleSubmit}>
       <Form.Group>
         <InputGroup>
-          <Link to={`/profiles/${profile_id}`}>
+          <Link to={`/profiles/${profile_id}`} className={styles.AvatarHover}>
             <Avatar src={profileImage} height={30}/>
           </Link>
           <Form.Control

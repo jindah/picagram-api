@@ -31,6 +31,7 @@ const Post = (props) => {
   // Check if the user is on the feed page or home page
   const isFeedPage = location.pathname.includes('/feed');
   const isHomePage = location.pathname === '/';
+  const isPostPage = location.pathname.startsWith('/posts/');
 
   const handleEdit = () => {
     history.push(`/posts/${id}/edit`);
@@ -123,7 +124,16 @@ const Post = (props) => {
             </OverlayTrigger>
           )}
           <Link to={`/posts/${id}`}>
-            <i className={`far fa-comments ${styles.Comments}`} />
+            {isPostPage ? (
+              <OverlayTrigger
+                placement="top"
+                overlay={<Tooltip>Comment down below!</Tooltip>}
+              >
+                <i className={`far fa-comments ${styles.Comments}`} />
+              </OverlayTrigger>
+            ) : (
+              <i className={`far fa-comments ${styles.Comments}`} />
+            )}
           </Link>
           
         </div>
