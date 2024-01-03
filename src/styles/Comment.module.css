@@ -12,3 +12,7 @@
   font-weight: lighter;
   color: #2b2b2b;
 }
+
+.editDelete i {
+  font-size: 0.8rem;
+}

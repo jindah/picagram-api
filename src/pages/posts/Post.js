@@ -64,7 +64,7 @@ const Post = (props) => {
         }),
       }));
     } catch (err) {
-      console.log(err);
+      // console.log(err);
     }
   };
 
@@ -80,7 +80,7 @@ const Post = (props) => {
         }),
       }));
     } catch (err) {
-      console.log(err);
+      // console.log(err);
     }
   };
 
@@ -132,7 +132,7 @@ const Post = (props) => {
                 <i className={`far fa-comments ${styles.Comments}`} />
               </OverlayTrigger>
             ) : (
-              <i className={`far fa-comments ${styles.Comments}`} />
+              <i className={`far fa-comments ${styles.Comments}`} /> 
             )}
           </Link>
           
