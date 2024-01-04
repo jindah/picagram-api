@@ -1,43 +1,62 @@
-.picagramLogo {
+/* Add these styles to App.module.css */
+
+.NavBar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: #000;
+    padding: 10px; /* Adjust padding as needed */
+  }
+  
+  /* Update .picagramLogo styles */
+  
+  .picagramLogo {
     text-decoration: none;
     display: flex;
-    font-family: "Grand Hotel",cursive;
+    font-family: "Grand Hotel", cursive;
     font-weight: 500;
     font-size: 2rem;
     cursor: pointer;
     padding-bottom: 10px;
-
-    i {
-        color: #cfced3;
-        font-size: 2rem;
-        padding: 5px;
-        padding-right: 15px;
-        vertical-align: middle;
-      }
-}
-.picagramLogo:hover {
-    background-color: #000;
-}
-
-.darkNavbar {
-    background-color: #000 !important;
-}
-
-.fullWidthNav {
-    width: 100%;
+    color: #cfced3; /* Set the default color */
   }
-
-.NavLink {
+  
+  .picagramLogo i {
+    color: #cfced3;
+    font-size: 2rem;
+    padding: 5px;
+    padding-right: 15px;
+    vertical-align: middle;
+  }
+  
+  .picagramLogo:hover {
+    background-color: #000;
+  }
+  
+  /* Update .darkNavbar styles */
+  
+  .darkNavbar {
+    background-color: #000 !important;
+  }
+  
+  /* Update .NavLink styles */
+  
+  .NavLink {
     padding: 5px;
     text-decoration: none;
-}
-
-.Active i {
-    color: #df8600;
-}
-
-a:hover {
-    text-decoration: none;
-    background-color: #202020;
+    color: #cfced3; /* Set the default color */
+  }
+  
+  .NavLink:hover {
+    background-color: #202020; /* Change the background color on hover */
     border-radius: 10px;
   }
+  
+  /* Update .Active styles */
+  
+  .Active i {
+    color: #df8600;
+  }
+  

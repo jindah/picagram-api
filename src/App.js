@@ -12,6 +12,7 @@ import PostsPage from "./pages/posts/PostsPage";
 import { useCurrentUser } from "./contexts/CurrentUserContext";
 import PostEditForm from "./pages/posts/PostEditForm";
 import NotFound from "./components/NotFound";
+import PopularProfiles from './pages/profiles/PopularProfiles';
 
 
 function App() {
@@ -22,7 +23,8 @@ function App() {
     <Container className={styles.App} fluid>
       <Row>
         <Col xs={12} lg={2} className={styles.NavCol}><NavBar /></Col>
-        <Col xs={12} lg={7} className={`justify-content-center align-items-center ${styles.MidCol}`}>
+        <Col xs={12} lg={3} className={`order-lg-2 ${styles.ProfilesCol}`}><PopularProfiles /></Col>
+        <Col xs={12} lg={7} className={`order-lg-1 justify-content-center align-items-center ${styles.MidCol}`}>
           <Switch>
             <Route
               exact
@@ -59,7 +61,6 @@ function App() {
             <Route render={() => <NotFound />} />
           </Switch>
         </Col>
-        <Col xs={12} lg={3} className="order-3">3 of 3</Col>
       </Row>
     </Container>
   );
