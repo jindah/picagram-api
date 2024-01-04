@@ -23,7 +23,14 @@ function App() {
     <Container className={styles.App} fluid>
       <Row>
         <Col xs={12} lg={2} className={styles.NavCol}><NavBar /></Col>
-        <Col xs={12} lg={3} className={`order-lg-2 ${styles.ProfilesCol}`}><PopularProfiles /></Col>
+        <Col xs={12} lg={3} className={`order-lg-2 ${styles.ProfilesCol}`}>
+          <Col>
+            <PopularProfiles mobile />
+          </Col>
+          <Col className="d-none d-lg-block">
+            <PopularProfiles />
+          </Col>
+        </Col>
         <Col xs={12} lg={7} className={`order-lg-1 justify-content-center align-items-center ${styles.MidCol}`}>
           <Switch>
             <Route

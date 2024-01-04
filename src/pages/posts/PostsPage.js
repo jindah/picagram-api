@@ -47,7 +47,7 @@ function PostsPage({ message, filter = "" }) {
 
   return (
     <Row className="h-100">
-      <Col className="py-2 p-0 p-lg-2" lg={10}>
+      <Col className="py-2 p-0 p-lg-2" lg={12}>
         <i className={`fas fa-search ${styles.SearchIcon}`} />
         <Form
           className={styles.SearchBar}
