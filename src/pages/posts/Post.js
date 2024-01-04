@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from 'react';
 import styles from "../../styles/Post.module.css";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { Card, OverlayTrigger, Tooltip } from "react-bootstrap";
@@ -6,6 +6,7 @@ import { Link, useHistory, useLocation } from "react-router-dom";
 import Avatar from "../../components/Avatar";
 import { axiosRes } from "../../api/axiosDefaults";
 import { MoreModal } from "../../components/MoreModal";
+import ShareModal from "../../components/ShareButton";
 
 const Post = (props) => {
   const {
@@ -32,6 +33,11 @@ const Post = (props) => {
   const isFeedPage = location.pathname.includes('/feed');
   const isHomePage = location.pathname === '/';
   const isPostPage = location.pathname.startsWith('/posts/');
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const shareUrl = `${window.location.origin}/posts/${id}`;
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
 
   const handleEdit = () => {
     history.push(`/posts/${id}/edit`);
@@ -135,7 +141,10 @@ const Post = (props) => {
               <i className={`far fa-comments ${styles.Comments}`} /> 
             )}
           </Link>
-          
+          <span onClick={openModal} style={{ cursor: 'pointer' }}>
+          <i className="fa-regular fa-paper-plane"></i>
+          </span>
+          <ShareModal isOpen={isModalOpen} onClose={closeModal} shareUrl={shareUrl} title={title} />
         </div>
         <Card.Text className={styles.PostBar}>{likes_count === 1 ? `${likes_count} like` : `${likes_count} likes`}</Card.Text>
         {content && <Card.Text className={styles.PostBar}><span className={styles.boldText}>{owner}</span>{content}</Card.Text>}
