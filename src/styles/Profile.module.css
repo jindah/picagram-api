@@ -1,0 +1,13 @@
+.WordBreak {
+    word-break: break-all;
+}
+
+.Follow {
+    font-size: 0.8rem;
+    color: #df8600;
+    cursor: pointer;
+}
+
+.Follow:hover {
+    color: #3d3d3d;
+}
