@@ -42,7 +42,7 @@ function PostPage() {
 
   return (
     <Row >
-      <Col lg={10}>
+      <Col lg={12}>
         <Post {...post.results[0]} setPosts={setPost} postPage />
         <Container className={appStyles.ContentBlack}>
         {currentUser ? (

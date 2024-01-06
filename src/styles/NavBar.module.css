@@ -1,52 +1,67 @@
 .NavBar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000;
-    background-color: #000;
-    padding: 10px;
-  }
-  
-  .picagramLogo {
-    text-decoration: none;
-    display: flex;
-    font-family: "Grand Hotel", cursive;
-    font-weight: 500;
-    font-size: 1.8rem;
-    cursor: pointer;
-    padding-bottom: 10px;
-    color: #cfced3;
-  }
-  
-  .picagramLogo i {
-    color: #cfced3;
-    font-size: 1.8rem;
-    padding: 5px;
-    padding-right: 15px;
-    vertical-align: middle;
-  }
-  
-  .picagramLogo:hover {
-    background-color: #000;
-  }
-  
-  .darkNavbar {
-    background-color: #000 !important;
-  }
-  
-  .NavLink {
-    padding: 5px;
-    text-decoration: none;
-    color: #cfced3; 
-  }
-  
-  .NavLink:hover {
-    background-color: #202020;
-    border-radius: 10px;
-  }
-  
-  .Active i {
-    color: #df8600;
-  }
-  
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: #000;
+  padding: 10px;
+}
+
+.mobileIconsRow {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.Container {
+  justify-content: center !important;
+}
+
+.picagramLogo {
+  text-decoration: none;
+  display: flex;
+  font-family: "Grand Hotel", cursive;
+  font-weight: 500;
+  font-size: 1.8rem;
+  cursor: pointer;
+  padding-bottom: 10px;
+  color: #cfced3;
+}
+
+.picagramLogo i {
+  color: #cfced3;
+  font-size: 1.8rem;
+  padding: 5px;
+  padding-right: 15px;
+  vertical-align: middle;
+}
+
+.picagramLogo:hover {
+  background-color: #000;
+}
+
+.darkNavbar {
+  background-color: #000 !important;
+}
+
+.NavLink {
+  padding: 5px;
+  text-decoration: none;
+  color: #cfced3; 
+}
+
+.NavLinkMob {
+  padding: 5px;
+  text-decoration: none;
+  color: #cfced3; 
+}
+
+.NavLink:hover {
+  background-color: #202020;
+  border-radius: 10px;
+}
+
+.Active i {
+  color: #df8600;
+}

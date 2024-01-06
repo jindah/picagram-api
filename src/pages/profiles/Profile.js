@@ -22,9 +22,9 @@ const Profile = (props) => {
         </Link>
       </div>
       <div className={`mx-2 ${styles.WordBreak}`}>
-        <strong>{owner}</strong>
+        {owner}
       </div>
-      <div className={`text-right ${!mobile && "ml-auto"}`}>
+      <div className={`${!mobile && "ml-auto"}`}>
         {!mobile &&
           currentUser &&
           !is_owner &&
