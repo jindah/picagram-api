@@ -33,6 +33,7 @@ const Post = (props) => {
   const isFeedPage = location.pathname.includes('/feed');
   const isHomePage = location.pathname === '/';
   const isPostPage = location.pathname.startsWith('/posts/');
+  const isProfilePage = location.pathname.startsWith('/profiles/');
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const shareUrl = `${window.location.origin}/posts/${id}`;
@@ -92,6 +93,14 @@ const Post = (props) => {
 
   return (
     <Card className={styles.Post}>
+      {isProfilePage ? (
+        // Render only the image when on the profile page
+        <Link to={`/posts/${id}`}>
+          <Card.Img src={image} alt={title} />
+        </Link>
+      ) : (
+        // Render the entire post content when not on the profile page
+        <>
         <Card.Body>
         <div className={`d-flex align-items-center justify-content-between ${styles.ProfileDate}`}>
             <Link to={`/profiles/${profile_id}`} className={`d-flex align-items-center ${styles.ProfileDateHover}`}>
@@ -145,11 +154,28 @@ const Post = (props) => {
           <i className="fa-regular fa-paper-plane"></i>
           </span>
           <ShareModal isOpen={isModalOpen} onClose={closeModal} shareUrl={shareUrl} title={title} />
-        </div>
-        <Card.Text className={styles.PostBar}>{likes_count === 1 ? `${likes_count} like` : `${likes_count} likes`}</Card.Text>
-        {content && <Card.Text className={styles.PostBar}><span className={styles.boldText}>{owner}</span>{content}</Card.Text>}
-        {isFeedPage || isHomePage ? ( <Link to={`/posts/${id}`}><Card.Text className={styles.PostBar}>{comments_count === 0 ? `Be the first to comment...` : `See all ${comments_count} comments...`}</Card.Text></Link>) : null}
-      </Card.Body>
+          </div>
+            <Card.Text className={styles.PostBar}>
+              {likes_count === 1 ? `${likes_count} like` : `${likes_count} likes`}
+            </Card.Text>
+            {content && (
+              <Card.Text className={styles.PostBar}>
+                <span className={styles.boldText}>{owner}</span>
+                {content}
+              </Card.Text>
+            )}
+            {isFeedPage || isHomePage ? (
+              <Link to={`/posts/${id}`}>
+                <Card.Text className={styles.PostBar}>
+                  {comments_count === 0
+                    ? `Be the first to comment...`
+                    : `See all ${comments_count} comments...`}
+                </Card.Text>
+              </Link>
+            ) : null}
+          </Card.Body>
+        </>
+      )}
     </Card>
   );
 };

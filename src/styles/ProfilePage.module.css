@@ -4,6 +4,10 @@
     width: 120px;
     margin: 4px;
   }
+
+.JoinDate {
+    color: #444444;
+}
   
   @media screen and (max-width: 991px) {
     .ProfileImage {
