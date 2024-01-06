@@ -8,14 +8,13 @@ import {
   } from "../contexts/CurrentUserContext";
 import Avatar from "./Avatar.js";
 import axios from "axios";
-import useClickOutsideToggle from "../hooks/useClickOutsideToggle.js";
 import { removeTokenTimestamp } from "../utils/utils.js";
+import { useMediaQuery } from 'react-responsive';
 
 const NavBar = () => {
   const currentUser = useCurrentUser();
   const setCurrentUser = useSetCurrentUser();
-
-  const { expanded, setExpanded, ref } = useClickOutsideToggle();
+  const isMobile = useMediaQuery({ maxWidth: 767 });
 
   const handleSignOut = async () => {
     try {
@@ -29,6 +28,20 @@ const NavBar = () => {
 
   const loggedInIcons = (
     <>
+      <Link to="/" className={styles.picagramLogo}>
+      <Navbar.Brand className={styles.picagramLogo}>
+      <i className="fa-solid fa-camera-retro"></i> Picagram
+      </Navbar.Brand>
+      </Link>
+
+      <NavLink
+      exact className={styles.NavLink}
+      activeClassName={styles.Active}
+      to="/"
+      >
+      <i className="fa-solid fa-house"></i> Home
+      </NavLink>
+
       <NavLink
       className={styles.NavLink}
       activeClassName={styles.Active}
@@ -69,8 +82,23 @@ const NavBar = () => {
 
     </>
     );
+
   const loggedOutIcons = (
     <>
+      <Link to="/" className={styles.picagramLogo}>
+      <Navbar.Brand className={styles.picagramLogo}>
+      <i className="fa-solid fa-camera-retro"></i> Picagram
+      </Navbar.Brand>
+      </Link>
+
+      <NavLink
+      exact className={styles.NavLink}
+      activeClassName={styles.Active}
+      to="/"
+      >
+      <i className="fa-solid fa-house"></i> Home
+      </NavLink>
+
       <NavLink
       className={styles.NavLink}
       activeClassName={styles.Active}
@@ -88,27 +116,113 @@ const NavBar = () => {
       </NavLink>
     </>
     );
+
+  const loggedInIconsMobile = (
+    <>
+      <NavLink
+      exact className={styles.NavLinkMob}
+      activeClassName={styles.Active}
+      to="/"
+      >
+      <i className="fa-solid fa-house"></i>
+      </NavLink>
+
+      <NavLink
+      className={styles.NavLinkMob}
+      activeClassName={styles.Active}
+      to="/feed"
+      >
+      <i className="fas fa-stream"></i>
+      </NavLink>
+      
+      <NavLink
+      className={styles.NavLinkMob}
+      activeClassName={styles.Active}
+      to="/liked"
+      >
+      <i className="fas fa-heart"></i>
+      </NavLink>
+
+      <NavLink
+      className={styles.NavLinkMob}
+      activeClassName={styles.Active}
+      to="/posts/create"
+      >
+      <i className="fas fa-plus-square"></i>
+      </NavLink>
+
+      <NavLink
+      className={styles.NavLinkMob}
+      to="/"
+      onClick={handleSignOut}>
+      <i className="fas fa-sign-out-alt"></i>
+      </NavLink>
+
+      <NavLink
+      className={styles.NavLinkMob}
+      to={`/profiles/${currentUser?.profile_id}`}
+      >
+      <Avatar src={currentUser?.profile_image} height={25} />
+      </NavLink>
+
+    </>
+    );
+
+  const loggedOutIconsMobile = (
+    <>
+      <NavLink
+      exact className={styles.NavLinkMob}
+      activeClassName={styles.Active}
+      to="/"
+      >
+      <i className="fa-solid fa-house"></i>
+      </NavLink>
+
+      <NavLink
+      className={styles.NavLinkMob}
+      activeClassName={styles.Active}
+      to="/login"
+      >
+      <i className="fa-solid fa-arrow-right-to-bracket"></i> Log In
+      </NavLink>
+
+      <NavLink
+      className={styles.NavLinkMob}
+      activeClassName={styles.Active}
+      to="/signup"
+      >
+      <i className="fa-solid fa-signature"></i> Sign Up
+      </NavLink>
+    </>
+    );
+
+    const desktopIcons = currentUser ? loggedInIcons : loggedOutIcons;
+    const mobileIcons = currentUser ? loggedInIconsMobile : loggedOutIconsMobile;
+  
     return (
       <>
-        <Navbar expanded={expanded} expand="lg" className={`bg-body-tertiary ${styles.darkNavbar}`} bg="dark" data-bs-theme="dark">
-        <Container fluid>
-          <Navbar.Toggle
-            ref={ref}
-            onClick={() => setExpanded(!expanded)}
-            aria-controls="basic-navbar-nav"
-          />
-            <Navbar.Collapse id="basic-navbar-nav">
-                <Nav className={`flex-column ${styles.fullWidthNav}`}>
-                <Link to="/" className={styles.picagramLogo}><Navbar.Brand className={styles.picagramLogo}><i className="fa-solid fa-camera-retro"></i> Picagram</Navbar.Brand></Link>
-                <NavLink exact className={styles.NavLink} activeClassName={styles.Active} to="/"><i className="fa-solid fa-house"></i> Home</NavLink>
-                
-                {currentUser ? loggedInIcons : loggedOutIcons}
-                </Nav>
-            </Navbar.Collapse>
-        </Container>
+        <Navbar
+          expand="lg"
+          className={`bg-body-tertiary ${styles.darkNavbar} sticky-top`}
+          bg="dark"
+          data-bs-theme="dark"
+        >
+          <Container className={styles.Container}>
+            {isMobile ? (
+              // Render icons in a single row for small screens
+              <Nav className={`${styles.mobileIconsRow}`}>
+                {mobileIcons}
+              </Nav>
+            ) : (
+              // Render icons in a column for larger screens
+              <Nav className="flex-column">
+                {desktopIcons}
+              </Nav>
+            )}
+          </Container>
         </Navbar>
       </>
     );
-  }
+  };
 
 export default NavBar
