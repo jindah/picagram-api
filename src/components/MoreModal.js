@@ -70,29 +70,29 @@ export const ProfileEditDropdown = ({ id }) => {
       <Modal show={show} onHide={handleClose}>
         <Modal.Body>
           <div className="text-center">
-            <Button
-              variant="link"
-              onClick={() => history.push(`/profiles/${id}/edit`)}
-              aria-label="edit-profile"
-            >
-              <i className="fas fa-edit" /> edit profile
-            </Button>
-            <Button
-              variant="link"
-              onClick={() => history.push(`/profiles/${id}/edit/username`)}
-              aria-label="edit-username"
-            >
-              <i className="far fa-id-card" />
-              change username
-            </Button>
-            <Button
-              variant="link"
-              onClick={() => history.push(`/profiles/${id}/edit/password`)}
-              aria-label="edit-password"
-            >
-              <i className="fas fa-key" />
-              change password
-            </Button>
+            <ButtonGroup>
+              <Button
+                variant="dark"
+                onClick={() => history.push(`/profiles/${id}/edit`)}
+                aria-label="edit-profile"
+              >
+                <i className="fas fa-edit" /> Edit profile
+              </Button>
+              <Button
+                variant="dark"
+                onClick={() => history.push(`/profiles/${id}/edit/username`)}
+                aria-label="edit-username"
+              >
+                <i className="far fa-id-card" /> Change username
+              </Button>
+              <Button
+                variant="dark"
+                onClick={() => history.push(`/profiles/${id}/edit/password`)}
+                aria-label="edit-password"
+              >
+                <i className="fas fa-key" /> Change password
+              </Button>
+            </ButtonGroup>
           </div>
         </Modal.Body>
       </Modal>
