@@ -54,12 +54,10 @@ function SignInForm() {
   return ( 
 <Container fluid className={styles.Container}>
   <Row className="justify-content-center align-items-center">
-    {/* Image */}
     <Col xs={12} md={6} className="text-center">
       <Image src={Login} className={styles.LoginImg} />
     </Col>
 
-    {/* Login Form */}
     <Col xs={12} md={6}>
       <Row className={`justify-content-center ${styles.Row}`}>
         <Col>

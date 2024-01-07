@@ -2,7 +2,7 @@ import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import NavBar from './components/NavBar';
 import styles from './App.module.css'
-import {Route, Switch} from 'react-router-dom'
+import {Route, Switch, useLocation} from 'react-router-dom'
 import './api/axiosDefaults'
 import SignUpForm from './pages/auth/SignUpForm';
 import SignInForm from './pages/auth/SignInForm';
@@ -23,17 +23,27 @@ function App() {
   const currentUser = useCurrentUser();
   const profile_id = currentUser?.profile_id || "";
 
+  const location = useLocation();
+  const isSignInOrSignUp = location.pathname.includes('/login') || location.pathname.includes('/signup');
+
   return (
     <Container className={styles.App} fluid>
       <Row>
         <Col xs={12} lg={2} className={styles.NavCol}><NavBar /></Col>
         <Col xs={12} lg={3} className={`order-lg-2 ${styles.ProfilesCol}`}>
-          <Col>
-            <PopularProfiles mobile />
-          </Col>
-          <Col className="d-none d-lg-block">
-            <PopularProfiles />
-          </Col>
+        {!isSignInOrSignUp && (
+            <>
+              <Col>
+                <PopularProfiles mobile />
+              </Col>
+              <Col className="d-none d-lg-block">
+                <PopularProfiles />
+              </Col>
+              <Col className="d-none d-lg-block mt-4">
+                <span className={styles.Copyright}>© 2024 Picagram by J. Timlin / Code Institute</span>
+              </Col>
+            </>
+          )}
         </Col>
         <Col xs={12} lg={7} className={`order-lg-1 justify-content-center align-items-center ${styles.MidCol}`}>
           <Switch>

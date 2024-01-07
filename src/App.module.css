@@ -82,6 +82,12 @@ i:hover {
   padding-top: 58px;
 }
 
+.Copyright {
+  color: #444444;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+}
+
 @media only screen and (max-width: 767px) {
   .NavCol {
     padding-top: 10px;
