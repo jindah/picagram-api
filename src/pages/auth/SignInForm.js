@@ -7,8 +7,10 @@ import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
+import Image from "react-bootstrap/Image";
 
 import { Link, useHistory } from "react-router-dom";
+import Login from "../../assets/login.png";
 
 import styles from "../../styles/SignInUpForm.module.css";
 import btnStyles from "../../styles/Button.module.css";
@@ -51,18 +53,24 @@ function SignInForm() {
 
   return ( 
 <Container fluid className={styles.Container}>
-  {/* First Row for Header */}
-  <Row className={`justify-content-center ${styles.Row}`}>
-    <Col>
-    <h1 className={styles.Header}>Login to Picagram</h1>
-    <hr className="my-4" />
+  <Row className="justify-content-center align-items-center">
+    {/* Image */}
+    <Col xs={12} md={6} className="text-center">
+      <Image src={Login} className={styles.LoginImg} />
     </Col>
-  </Row>
 
-  {/* Second Row for Form */}
-  <Row className={`${styles.Row}`}>
-    <Col>
-      <Container className="justify-content-center">
+    {/* Login Form */}
+    <Col xs={12} md={6}>
+      <Row className={`justify-content-center ${styles.Row}`}>
+        <Col>
+          <h1 className={styles.Header}>Login to Picagram</h1>
+          <hr className="my-4" />
+        </Col>
+      </Row>
+
+      <Row className={`${styles.Row}`}>
+        <Col>
+          <Container className="justify-content-center">
           <Form onSubmit={handleSubmit}>
             <Form.Group controlId="username">
               <Form.Label className="d-none">username</Form.Label>
@@ -110,16 +118,22 @@ function SignInForm() {
               </Alert>
             ))}
           </Form>
-        </Container>
+          </Container>
+        </Col>
+      </Row>
 
-        <Container className="mt-3">
-          <Link className={styles.Link} to="/signup">
-            Don't have an account? <span>Sign up now!</span>
-          </Link>
-        </Container>
-      </Col>
-    </Row>
-  </Container>    
+      <Row className={`${styles.Row}`}>
+        <Col>
+          <Container className="mt-3">
+            <Link className={styles.Link} to="/signup">
+              Don't have an account? <span>Sign up now!</span>
+            </Link>
+          </Container>
+        </Col>
+      </Row>
+    </Col>
+  </Row>
+</Container>
    );
 }
 

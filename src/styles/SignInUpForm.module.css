@@ -47,3 +47,8 @@
   margin: 0 auto !important;
   text-align: center !important;
 }
+
+.LoginImg {
+  width: 300px;
+  height: auto;
+}

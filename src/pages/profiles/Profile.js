@@ -3,6 +3,7 @@ import styles from "../../styles/Profile.module.css";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { Link } from "react-router-dom";
 import Avatar from "../../components/Avatar";
+import { useSetProfileData } from "../../contexts/ProfileDataContext";
 
 
 const Profile = (props) => {
@@ -11,6 +12,8 @@ const Profile = (props) => {
 
   const currentUser = useCurrentUser();
   const is_owner = currentUser?.username === owner;
+
+  const  {handleFollow, handleUnfollow} = useSetProfileData();
 
   return (
     <div
@@ -31,14 +34,14 @@ const Profile = (props) => {
           (following_id ? (
             <span
               className={`${styles.Follow}`}
-              onClick={() => {}}
+              onClick={() => handleUnfollow(profile)}
             >
               Unfollow
             </span>
           ) : (
             <span
             className={`${styles.Follow}`}
-              onClick={() => {}}
+            onClick={() => handleFollow(profile)}
             >
               Follow
             </span>

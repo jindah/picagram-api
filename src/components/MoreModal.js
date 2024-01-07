@@ -46,7 +46,7 @@ export const MoreModal = ({ handleEdit, handleDelete }) => {
                 variant="dark"
                 onClick={handleClose}
               >
-              <i className="fa-solid fa-xmark"></i> Close
+              <i className="fa-solid fa-xmark" /> Close
               </Button>
             </ButtonGroup>
           </div>
