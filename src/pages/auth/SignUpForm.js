@@ -64,7 +64,7 @@ const SignUpForm = () => {
 
     <Row className={`${styles.Row}`}>
       <Col>
-        <Container className="justify-content-center">
+        <Container className="justify-content-center text-center">
             <Form onSubmit={handleSubmit}>
               <Form.Group controlId="username">
                 <Form.Label className="d-none">username</Form.Label>
@@ -118,7 +118,7 @@ const SignUpForm = () => {
               ))}
 
               <Button
-                className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.Bright} ${styles.Centered}`}
+                className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.Bright}`}
                 type="submit"
               >
                 Sign up

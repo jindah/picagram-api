@@ -42,12 +42,6 @@
   color: #ff9254;
 }
 
-.Centered {
-  display: block !important;
-  margin: 0 auto !important;
-  text-align: center !important;
-}
-
 .LoginImg {
   width: 300px;
   height: auto;

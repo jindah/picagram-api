@@ -1,7 +1,7 @@
 import React from 'react'
 import { Navbar, Nav, Container } from 'react-bootstrap';
 import styles from '../styles/NavBar.module.css';
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink, Link, useHistory } from 'react-router-dom';
 import { 
   useCurrentUser,
   useSetCurrentUser,
@@ -12,19 +12,22 @@ import { removeTokenTimestamp } from "../utils/utils.js";
 import { useMediaQuery } from 'react-responsive';
 
 const NavBar = () => {
+  const history = useHistory();
   const currentUser = useCurrentUser();
   const setCurrentUser = useSetCurrentUser();
   const isMobile = useMediaQuery({ maxWidth: 1023 });
 
   const handleSignOut = async () => {
+ 
     try {
       await axios.post("dj-rest-auth/logout/");
       setCurrentUser(null);
       removeTokenTimestamp();
-    } catch (err) {
-      // console.log(err);
-    }
-  };
+  
+      // Redirect to the login page after successful logout
+      history.push('/login');
+    } catch (err) { }
+};
 
   const loggedInIcons = (
     <>
