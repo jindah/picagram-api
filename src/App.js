@@ -15,6 +15,7 @@ import NotFound from "./components/NotFound";
 import PopularProfiles from './pages/profiles/PopularProfiles';
 import ProfilePage from "./pages/profiles/ProfilePage";
 
+
 function App() {
   const currentUser = useCurrentUser();
   const profile_id = currentUser?.profile_id || "";

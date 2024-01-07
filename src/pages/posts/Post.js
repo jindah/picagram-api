@@ -28,8 +28,8 @@ const Post = (props) => {
   const is_owner = currentUser?.username === owner;
   const history = useHistory();
 
+  // Check what page the user is on
   const location = useLocation();
-  // Check if the user is on the feed page or home page
   const isFeedPage = location.pathname.includes('/feed');
   const isHomePage = location.pathname === '/';
   const isPostPage = location.pathname.startsWith('/posts/');
@@ -53,7 +53,6 @@ const Post = (props) => {
         await axiosRes.delete(`/posts/${id}/`);
         history.push('/');
       } catch (err) {
-        // Handle error
         console.error(err);
       }
     }
@@ -94,10 +93,18 @@ const Post = (props) => {
   return (
     <Card className={styles.Post}>
       {isProfilePage ? (
-        // Render only the image when on the profile page
+        // Render only the image, likes and comments count when on the profile page
+        <>
         <Link to={`/posts/${id}`}>
           <Card.Img src={image} alt={title} />
         </Link>
+        <Card.Body>
+          <Card.Text className={styles.PostBarDark}>
+          {likes_count === 1 ? `${likes_count} like • ` : `${likes_count} likes • `}
+          {comments_count === 1 ? `${comments_count} comment` : `${comments_count} comments`}
+          </Card.Text>
+        </Card.Body>
+        </>
       ) : (
         // Render the entire post content when not on the profile page
         <>
@@ -150,13 +157,14 @@ const Post = (props) => {
               <i className={`far fa-comments ${styles.Comments}`} /> 
             )}
           </Link>
-          <span onClick={openModal} style={{ cursor: 'pointer' }}>
+          <span onClick={openModal}>
           <i className="fa-regular fa-paper-plane"></i>
           </span>
           <ShareModal isOpen={isModalOpen} onClose={closeModal} shareUrl={shareUrl} title={title} />
           </div>
             <Card.Text className={styles.PostBar}>
-              {likes_count === 1 ? `${likes_count} like` : `${likes_count} likes`}
+            {likes_count === 1 ? `${likes_count} like • ` : `${likes_count} likes • `}
+            {comments_count === 1 ? `${comments_count} comment` : `${comments_count} comments`}
             </Card.Text>
             {content && (
               <Card.Text className={styles.PostBar}>

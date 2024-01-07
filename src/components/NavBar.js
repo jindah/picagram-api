@@ -14,7 +14,7 @@ import { useMediaQuery } from 'react-responsive';
 const NavBar = () => {
   const currentUser = useCurrentUser();
   const setCurrentUser = useSetCurrentUser();
-  const isMobile = useMediaQuery({ maxWidth: 767 });
+  const isMobile = useMediaQuery({ maxWidth: 1023 });
 
   const handleSignOut = async () => {
     try {
@@ -22,7 +22,7 @@ const NavBar = () => {
       setCurrentUser(null);
       removeTokenTimestamp();
     } catch (err) {
-      // // console.log(err);
+      // console.log(err);
     }
   };
 
@@ -202,10 +202,8 @@ const NavBar = () => {
     return (
       <>
         <Navbar
-          expand="lg"
-          className={`bg-body-tertiary ${styles.darkNavbar} sticky-top`}
-          bg="dark"
-          data-bs-theme="dark"
+          expand="xl"
+          className={`${styles.darkNavbar} sticky-top`}
         >
           <Container className={styles.Container}>
             {isMobile ? (
