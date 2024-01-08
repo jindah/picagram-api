@@ -18,11 +18,14 @@ import { useCurrentUser } from "../../contexts/CurrentUserContext";
 function PostPage() {
   const { id } = useParams();
   const [post, setPost] = useState({ results: [] });
-
-  const currentUser = useCurrentUser();
-  const profile_image = currentUser?.profile_image;
   const [comments, setComments] = useState({ results: [] });
 
+  // Get the current user and their profile image
+  const currentUser = useCurrentUser();
+  const profile_image = currentUser?.profile_image;
+
+
+  // Use useEffect to fetch post and comments data on component mount
   useEffect(() => {
     const handleMount = async () => {
       try {
@@ -45,14 +48,15 @@ function PostPage() {
       <Col lg={12}>
         <Post {...post.results[0]} setPosts={setPost} postPage />
         <Container className={appStyles.ContentBlack}>
-        {currentUser ? (
-          <CommentCreateForm
-            profile_id={currentUser.profile_id}
-            profileImage={profile_image}
-            post={id}
-            setPost={setPost}
-            setComments={setComments}
-          />
+        {/* Render CommentCreateForm only if there is a current user */}
+          {currentUser ? (
+            <CommentCreateForm
+              profile_id={currentUser.profile_id}
+              profileImage={profile_image}
+              post={id}
+              setPost={setPost}
+              setComments={setComments}
+            />
           ) : comments.results.length ? (
             "Comments"
           ) : null}
@@ -74,8 +78,10 @@ function PostPage() {
             next={() => fetchMoreData(comments, setComments)}
             />
           ) : currentUser ? (
+            // Render an empty span if there are no comments (and user is logged in)
             <span> </span>
           ) : (
+            // Render a message if there are no comments and user is not logged in
             <span>No comments yet. Login to comment!</span>
           )}
         </Container>

@@ -4,16 +4,20 @@ import { axiosRes, axiosReq } from "../api/axiosDefaults";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { removeTokenTimestamp, shouldRefreshToken } from "../utils/utils";
 
+// Creating a context to hold the current user data and
+// custom hooks for easily accessing the current user and setting the current user
 export const CurrentUserContext = createContext();
 export const SetCurrentUserContext = createContext();
-
 export const useCurrentUser = () => useContext(CurrentUserContext)
 export const useSetCurrentUser = () => useContext(SetCurrentUserContext)
 
+// This context is used to manage and share the current
+// user's data across various components in the application.
 export const CurrentUserProvider = ({children}) => {
     const [currentUser, setCurrentUser] = useState(null);
     const history = useHistory()
 
+    // Function to fetch the user data on component mount
     const handleMount = async () => {
       try {
         const { data } = await axiosRes.get("dj-rest-auth/user/");
@@ -23,10 +27,12 @@ export const CurrentUserProvider = ({children}) => {
       }
     };
   
+    // Effect to fetch user data on component mount
     useEffect(() => {
       handleMount();
     }, []);
 
+    // Memoized block to set up Axios interceptors for token refreshing
     useMemo(() => {
       axiosReq.interceptors.request.use(
         async (config) => {

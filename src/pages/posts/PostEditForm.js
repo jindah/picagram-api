@@ -24,16 +24,22 @@ function PostEditForm() {
   });
   const { content, image } = postData;
 
+  // Reference to the image input element
   const imageInput = useRef(null);
+
+  // Use useHistory and useParams hooks for navigation and obtaining URL parameters
   const history = useHistory();
   const { id } = useParams();
 
+  // Use useEffect to fetch post data on component mount
   useEffect(() => {
     const handleMount = async () => {
       try {
         const { data } = await axiosReq.get(`/posts/${id}/`);
         const { content, image, is_owner } = data;
 
+        // Check if the current user is the owner of the post
+        // If not, redirect them to the home page
         is_owner ? setPostData({ content, image }) : history.push("/");
       } catch (err) {
         // console.log(err);
@@ -43,6 +49,7 @@ function PostEditForm() {
     handleMount();
   }, [history, id]);
 
+  // Function to handle form field changes
   const handleChange = (event) => {
     setPostData({
       ...postData,
@@ -50,6 +57,7 @@ function PostEditForm() {
     });
   };
 
+  // Function to handle image input changes
   const handleChangeImage = (event) => {
     if (event.target.files.length) {
       URL.revokeObjectURL(image);
@@ -60,12 +68,14 @@ function PostEditForm() {
     }
   };
 
+  // Function to handle form submission
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData();
 
     formData.append("content", content);
 
+    // If a new image is selected, append it to the FormData object
     if (imageInput?.current?.files[0]) {
         formData.append("image", imageInput.current.files[0]);
       }
@@ -81,6 +91,7 @@ function PostEditForm() {
       }
     };
 
+  // JSX for the text fields section
   const textFields = (
     <div className="text-center">
       <Form.Group>

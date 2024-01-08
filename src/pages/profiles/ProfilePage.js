@@ -36,6 +36,7 @@ function ProfilePage() {
   const [profile] = pageProfile.results;
   const is_owner = currentUser?.username === profile?.owner;
 
+  // Effect to fetch profile data and posts on component mount
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -57,6 +58,7 @@ function ProfilePage() {
     fetchData();
   }, [id, setProfileData]);
 
+  // JSX for the main profile section
   const mainProfile = (
     <>
     {profile?.is_owner && <ProfileEditDropdown id={profile?.id} />}
@@ -104,11 +106,13 @@ function ProfilePage() {
               </Button>
             ))}
         </Col>
+        {/* Display profile content */}
         {profile?.content && <Col className="p-3">{profile.content}</Col>}
       </Row>
     </>
   );
 
+  // JSX for the main profile posts section
   const mainProfilePosts = (
     <>
       <hr />
@@ -116,12 +120,14 @@ function ProfilePage() {
       <hr />
       <Container>
         <Row xs={2} md={2} lg={2} className="g-4">
+          {/* Display profile posts */}
           {profilePosts.results.map((post) => (
             <Col key={post.id}>
               <Post {...post} setPosts={setProfilePosts} />
             </Col>
           ))}
         </Row>
+        {/* Infinite scroll for more posts */}
         <InfiniteScroll
           dataLength={profilePosts.results.length}
           loader={<Asset spinner />}

@@ -24,14 +24,17 @@ const Profile = (props) => {
           <Avatar src={image} height={imageSize} />
         </Link>
       </div>
+      {/* Display owner's name */}
       <div className={`mx-2 ${styles.WordBreak}`}>
         {owner}
       </div>
+      {/* Display follow/unfollow button */}
       <div className={`${!mobile && "ml-auto"}`}>
         {!mobile &&
           currentUser &&
           !is_owner &&
           (following_id ? (
+            // Display unfollow button if the user is following the profile
             <span
               className={`${styles.Follow}`}
               onClick={() => handleUnfollow(profile)}
@@ -39,6 +42,7 @@ const Profile = (props) => {
               Unfollow
             </span>
           ) : (
+            // Display follow button if the user is not following the profile
             <span
             className={`${styles.Follow}`}
             onClick={() => handleFollow(profile)}

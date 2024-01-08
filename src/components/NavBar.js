@@ -17,6 +17,7 @@ const NavBar = () => {
   const setCurrentUser = useSetCurrentUser();
   const isMobile = useMediaQuery({ maxWidth: 1023 });
 
+  // Function to handle user sign-out
   const handleSignOut = async () => {
  
     try {
@@ -29,6 +30,7 @@ const NavBar = () => {
     } catch (err) { }
 };
 
+  // JSX for icons when the user is logged in
   const loggedInIcons = (
     <>
       <Link to="/" className={styles.picagramLogo}>
@@ -85,7 +87,8 @@ const NavBar = () => {
 
     </>
     );
-
+  
+  // JSX for icons when the user is logged out
   const loggedOutIcons = (
     <>
       <Link to="/" className={styles.picagramLogo}>
@@ -120,6 +123,7 @@ const NavBar = () => {
     </>
     );
 
+  // JSX for mobile view when the user is logged in
   const loggedInIconsMobile = (
     <>
       <NavLink
@@ -171,6 +175,7 @@ const NavBar = () => {
     </>
     );
 
+  // JSX for mobile view when the user is logged out
   const loggedOutIconsMobile = (
     <>
       <NavLink
@@ -199,6 +204,7 @@ const NavBar = () => {
     </>
     );
 
+    // Determine which set of icons to use based on the user's authentication status
     const desktopIcons = currentUser ? loggedInIcons : loggedOutIcons;
     const mobileIcons = currentUser ? loggedInIconsMobile : loggedOutIconsMobile;
   

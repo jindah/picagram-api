@@ -2,6 +2,7 @@ import React from 'react';
 import { Modal, Button } from 'react-bootstrap';
 import { FacebookShareButton, TwitterShareButton, WhatsappShareButton } from 'react-share';
 
+// Share modal for sharing posts to other platforms
 const ShareModal = ({ isOpen, onClose, shareUrl, title }) => {
   return (
     <Modal show={isOpen} onHide={onClose}>

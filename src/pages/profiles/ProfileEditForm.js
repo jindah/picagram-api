@@ -34,6 +34,7 @@ const ProfileEditForm = () => {
 
   const [errors, setErrors] = useState({});
 
+  // Effect to fetch profile data on component mount
   useEffect(() => {
     const handleMount = async () => {
       if (currentUser?.profile_id?.toString() === id) {
@@ -53,6 +54,7 @@ const ProfileEditForm = () => {
     handleMount();
   }, [currentUser, history, id]);
 
+  // Event handler for form input changes
   const handleChange = (event) => {
     setProfileData({
       ...profileData,
@@ -60,6 +62,7 @@ const ProfileEditForm = () => {
     });
   };
 
+  // Event handler for form submission
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData();
@@ -83,6 +86,7 @@ const ProfileEditForm = () => {
     }
   };
 
+  // JSX for text fields section of the form
   const textFields = (
     <>
       <Form.Group>
@@ -116,9 +120,11 @@ const ProfileEditForm = () => {
   return (
     <Form onSubmit={handleSubmit}>
       <Row>
+        {/* Image and text fields for smaller screens */}
         <Col className="py-2 p-0 p-md-2 text-center" md={7} lg={6}>
           <Container className={appStyles.Content}>
             <Form.Group>
+              {/* Display current image and handle image change */}
               {image && (
                 <figure>
                   <Image src={image} fluid />
@@ -151,9 +157,11 @@ const ProfileEditForm = () => {
                 }}
               />
             </Form.Group>
+            {/* Display text fields section for smaller screens */}
             <div className="d-md-none">{textFields}</div>
           </Container>
         </Col>
+        {/* Text fields section for larger screens */}
         <Col md={5} lg={6} className="d-none d-md-block p-0 p-md-2 text-center">
           <Container className={appStyles.Content}>{textFields}</Container>
         </Col>

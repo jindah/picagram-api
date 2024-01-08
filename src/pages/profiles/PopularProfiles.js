@@ -16,15 +16,18 @@ const PopularProfiles = ({ mobile }) => {
       }`}
     >
       {popularProfiles.results.length ? (
+        // Render popular profiles if there are results
         <>
           <p className={styles.boldText}>User suggestions</p>
           {mobile ? (
+            // Render mobile layout with up to 4 profiles side by side
             <div className="d-flex justify-content-around">
               {popularProfiles.results.slice(0, 4).map((profile) => (
                 <Profile key={profile.id} profile={profile} mobile />
               ))}
             </div>
           ) : (
+            // Render profiles in a regular layout
             popularProfiles.results.map((profile) => (
               <Profile key={profile.id} profile={profile} />
             ))

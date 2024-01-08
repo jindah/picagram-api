@@ -35,15 +35,19 @@ const Post = (props) => {
   const isPostPage = location.pathname.startsWith('/posts/');
   const isProfilePage = location.pathname.startsWith('/profiles/');
 
+  // State to manage the visibility of the ShareModal
   const [isModalOpen, setIsModalOpen] = useState(false);
+  // Construct the share URL
   const shareUrl = `${window.location.origin}/posts/${id}`;
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
 
+  // Function to navigate to the post edit page
   const handleEdit = () => {
     history.push(`/posts/${id}/edit`);
   };
 
+  // Function to handle post deletion
   const handleDelete = async () => {
     // Display a confirmation dialog
     const isConfirmed = window.confirm('Are you sure you want to delete this post?');
@@ -58,6 +62,7 @@ const Post = (props) => {
     }
   };
 
+  // Function to handle post like
   const handleLike = async () => {
     try {
       const { data } = await axiosRes.post("/likes/", { post: id });
@@ -74,6 +79,7 @@ const Post = (props) => {
     }
   };
 
+  // Function to handle post unlike
   const handleUnlike = async () => {
     try {
       await axiosRes.delete(`/likes/${like_id}/`);
@@ -114,6 +120,7 @@ const Post = (props) => {
             <Avatar src={profile_image} height={30} />
             <span>{owner} • {updated_at}</span>
             </Link>
+            {/* Render MoreModal component for post owner to edit or delete the post */}
             {is_owner && <MoreModal handleEdit={handleEdit} handleDelete={handleDelete}/>}
         </div>
         </Card.Body>
@@ -157,6 +164,7 @@ const Post = (props) => {
               <i className={`far fa-comments ${styles.Comments}`} /> 
             )}
           </Link>
+          {/* Render ShareModal component to share the post */}
           <span onClick={openModal}>
           <i className="fa-regular fa-paper-plane"></i>
           </span>
@@ -177,7 +185,9 @@ const Post = (props) => {
                 <Card.Text className={styles.PostBar}>
                   {comments_count === 0
                     ? `Be the first to comment...`
-                    : `See all ${comments_count} comments...`}
+                    : comments_count === 1
+                      ? `See the one comment...`
+                      : `See all ${comments_count} comments...`}
                 </Card.Text>
               </Link>
             ) : null}

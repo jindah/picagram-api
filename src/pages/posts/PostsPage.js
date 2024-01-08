@@ -24,6 +24,7 @@ function PostsPage({ message, filter = "" }) {
 
   const [query, setQuery] = useState("");
 
+  // UseEffect to fetch posts data when filter, query, or pathname changes
   useEffect(() => {
     const fetchPosts = async () => {
       try {
@@ -35,6 +36,8 @@ function PostsPage({ message, filter = "" }) {
       }
     };
 
+    // Set hasLoaded to false and use a timer to wait for 
+    // user to stop typing before making the API call
     setHasLoaded(false);
     const timer = setTimeout(() => {
       fetchPosts();
@@ -48,6 +51,7 @@ function PostsPage({ message, filter = "" }) {
   return (
     <Row className="h-100">
       <Col className="py-2 p-0 p-lg-2" lg={12}>
+        {/* Search bar with search icon */}
         <i className={`fas fa-search ${styles.SearchIcon}`} />
         <Form
           className={styles.SearchBar}
@@ -65,6 +69,7 @@ function PostsPage({ message, filter = "" }) {
         {hasLoaded ? (
           <>
             {posts.results.length ? (
+              // Render InfiniteScroll to display posts with lazy loading
               <InfiniteScroll
                 children={posts.results.map((post) => (
                   <Post key={post.id} {...post} setPosts={setPosts} />

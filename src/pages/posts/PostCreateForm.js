@@ -31,6 +31,7 @@ function PostCreateForm() {
   const imageInput = useRef(null);
   const history = useHistory();
 
+  // Function to handle form field changes
   const handleChange = (event) => {
     setPostData({
       ...postData,
@@ -38,6 +39,7 @@ function PostCreateForm() {
     });
   };
 
+  // Function to handle image input changes
   const handleChangeImage = (event) => {
     if (event.target.files.length) {
       URL.revokeObjectURL(image);
@@ -48,10 +50,12 @@ function PostCreateForm() {
     }
   };
 
+  // Function to handle form submission
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData();
 
+    // Append content and image data to the FormData object
     formData.append("content", content);
     formData.append("image", imageInput.current.files[0]);
 
@@ -66,6 +70,7 @@ function PostCreateForm() {
     }
   };
 
+  // JSX for the text fields section
   const textFields = (
     <div className="text-center">
       <Form.Group>
@@ -106,6 +111,7 @@ function PostCreateForm() {
               {image ? (
                 <>
                   <figure>
+                    {/* Display the selected image */}
                     <Image
                         className={appStyles.Image}
                         src={image}
@@ -122,6 +128,7 @@ function PostCreateForm() {
                   </div>
                 </>
               ) : (
+                // Display the upload button and message when no image is selected
                 <Form.Label
                   className="d-flex justify-content-center"
                   htmlFor="image-upload"
@@ -133,6 +140,7 @@ function PostCreateForm() {
                 </Form.Label>
               )}
 
+              {/* Input element for selecting an image */}
               <Form.File
                 id="image-upload"
                 accept="image/*"

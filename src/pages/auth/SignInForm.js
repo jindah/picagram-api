@@ -19,6 +19,8 @@ import { useRedirect } from "../../hooks/useRedirect";
 import { setTokenTimestamp } from "../../utils/utils";
 
 function SignInForm() {
+  // Get the setCurrentUser function from the context and redirect the user
+  // if aleary logged in.
   const setCurrentUser = useSetCurrentUser();
   useRedirect('loggedIn')
 
@@ -31,6 +33,8 @@ function SignInForm() {
   const [errors, setErrors] = useState({});
 
   const history = useHistory();
+
+  // Handle form submission
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -44,6 +48,7 @@ function SignInForm() {
     }
   };
 
+  // Handle form input changes
   const handleChange = (event) => {
     setSignInData({
       ...signInData,
@@ -58,6 +63,7 @@ function SignInForm() {
       <Image src={Login} className={styles.LoginImg} />
     </Col>
 
+    {/* Column containing the login form */}
     <Col xs={12} md={6}>
       <Row className={`justify-content-center ${styles.Row}`}>
         <Col>
@@ -70,6 +76,8 @@ function SignInForm() {
         <Col>
           <Container className="justify-content-center text-center">
           <Form onSubmit={handleSubmit}>
+            
+            {/* Username input */}
             <Form.Group controlId="username">
               <Form.Label className="d-none">username</Form.Label>
               <Form.Control
@@ -87,6 +95,7 @@ function SignInForm() {
               </Alert>
             ))}
 
+            {/* Password input */}
             <Form.Group controlId="password">
               <Form.Label className="d-none">Password</Form.Label>
               <Form.Control
@@ -120,6 +129,7 @@ function SignInForm() {
         </Col>
       </Row>
 
+      {/* Row for the sign-up link */}
       <Row className={`${styles.Row}`}>
         <Col>
           <Container className="mt-3">

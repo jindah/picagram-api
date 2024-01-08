@@ -28,9 +28,11 @@ const UsernameForm = () => {
   const setCurrentUser = useSetCurrentUser();
 
   useEffect(() => {
+    // Set the initial value of the username field to the current username
     if (currentUser?.profile_id?.toString() === id) {
       setUsername(currentUser.username);
     } else {
+      // Redirect to home if the current user is not the owner of the profile
       history.push("/");
     }
   }, [currentUser, history, id]);
@@ -56,6 +58,7 @@ const UsernameForm = () => {
     <Row>
       <Col className="py-2 mx-auto text-center" md={6}>
         <Container className={appStyles.Content}>
+          {/* Form for changing the username */}
           <Form onSubmit={handleSubmit} className="my-2">
             <Form.Group>
               <Form.Label>Change username</Form.Label>

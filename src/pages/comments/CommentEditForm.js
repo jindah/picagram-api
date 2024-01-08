@@ -10,10 +10,12 @@ function CommentEditForm(props) {
 
   const [formContent, setFormContent] = useState(content);
 
+  // Handle change in the comment content input
   const handleChange = (event) => {
     setFormContent(event.target.value);
   };
 
+  // Handle form submission to update the comment
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
@@ -32,6 +34,8 @@ function CommentEditForm(props) {
             : comment;
         }),
       }));
+
+      // Hide the edit form after successful comment update
       setShowEditForm(false);
     } catch (err) {
       // console.log(err);
@@ -50,6 +54,7 @@ function CommentEditForm(props) {
         />
       </Form.Group>
       <div className="text-right">
+        {/* Cancel button to exit the edit mode */}
         <button
           className={styles.Button}
           onClick={() => setShowEditForm(false)}
@@ -57,9 +62,10 @@ function CommentEditForm(props) {
         >
           cancel
         </button>
+        {/* Save button to submit the edited comment */}
         <button
           className={styles.Button}
-          disabled={!content.trim()}
+          disabled={!content.trim()} // Disable if the content is empty
           type="submit"
         >
           save

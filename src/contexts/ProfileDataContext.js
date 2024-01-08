@@ -9,6 +9,9 @@ const SetProfileDataContext = createContext();
 export const useProfileData = () => useContext(ProfileDataContext);
 export const useSetProfileData = () => useContext(SetProfileDataContext);
 
+// This context is designed to manage and share profile-related
+// data (such as page profiles and popular profiles) and associated
+// functions for following and unfollowing profiles.
 export const ProfileDataProvider = ({ children }) => {
   const [profileData, setProfileData] = useState({
     pageProfile: { results: [] },

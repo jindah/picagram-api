@@ -31,7 +31,8 @@ function App() {
       <Row>
         <Col xs={12} lg={2} className={styles.NavCol}><NavBar /></Col>
         <Col xs={12} lg={3} className={`order-lg-2 ${styles.ProfilesCol}`}>
-        {!isSignInOrSignUp && (
+          {/* Render PopularProfiles if not in SignIn/SignUp pages */}
+          {!isSignInOrSignUp && (
             <>
               <Col>
                 <PopularProfiles mobile />
@@ -82,7 +83,8 @@ function App() {
             <Route exact path="/profiles/:id" render={() => <ProfilePage />} />
             <Route exact path="/profiles/:id/edit/username" render={() => <UsernameForm />} />
             <Route exact path="/profiles/:id/edit/password" render={() => <UserPasswordForm />} />
-            <Route exact path="/profiles/:id/edit" render={() => <ProfileEditForm />} />            
+            <Route exact path="/profiles/:id/edit" render={() => <ProfileEditForm />} />
+            {/* Catch-all route for handling unmatched routes */}            
             <Route render={() => <NotFound />} />
           </Switch>
         </Col>

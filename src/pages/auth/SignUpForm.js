@@ -18,6 +18,7 @@ import axios from "axios";
 import { useRedirect } from "../../hooks/useRedirect.js";
 
 const SignUpForm = () => {
+  // Redirect the user if already logged in
   useRedirect('loggedIn')
   const [signUpData, setSignUpData] = useState({
     username: "",
@@ -30,6 +31,7 @@ const SignUpForm = () => {
 
   const history = useHistory();
 
+  // Handle form input changes
   const handleChange = (event) => {
     setSignUpData({
       ...signUpData,
@@ -37,12 +39,14 @@ const SignUpForm = () => {
     });
   };
 
+  // Handle form submission
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
       await axios.post("/dj-rest-auth/registration/", signUpData);
       history.push("/login");
     } catch (err) {
+      // Handle registration errors and display error messages
       setErrors(err.response?.data);
     }
   };
@@ -54,6 +58,7 @@ const SignUpForm = () => {
       <Image src={Login} className={styles.LoginImg} />
     </Col>
 
+    {/* Column containing the sign-up form */}
     <Col xs={12} md={6}>
     <Row className={`justify-content-center ${styles.Row}`}>
       <Col>
@@ -66,6 +71,8 @@ const SignUpForm = () => {
       <Col>
         <Container className="justify-content-center text-center">
             <Form onSubmit={handleSubmit}>
+
+              {/* Username input */}
               <Form.Group controlId="username">
                 <Form.Label className="d-none">username</Form.Label>
                 <Form.Control
@@ -83,6 +90,7 @@ const SignUpForm = () => {
                 </Alert>
               ))}
 
+              {/* Password input */}
               <Form.Group controlId="password1">
                 <Form.Label className="d-none">Password</Form.Label>
                 <Form.Control
@@ -100,6 +108,7 @@ const SignUpForm = () => {
                 </Alert>
               ))}
 
+              {/* Confirm password input */}
               <Form.Group controlId="password2">
                 <Form.Label className="d-none">Confirm password</Form.Label>
                 <Form.Control
@@ -131,11 +140,12 @@ const SignUpForm = () => {
             </Form>
           </Container>
 
+          {/* Container for the sign-in link */}
           <Container className="mt-3">
             <Link className={styles.Link} to="/login">
               Already have an account? <span>Sign in</span>
             </Link>
-            </Container>
+          </Container>
         </Col>
       </Row>
     </Col>

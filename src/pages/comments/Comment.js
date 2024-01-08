@@ -23,6 +23,7 @@ const Comment = (props) => {
   const currentUser = useCurrentUser();
   const is_owner = currentUser?.username === owner;
 
+  // Handle comment deletion
   const handleDelete = async () => {
     try {
       await axiosRes.delete(`/comments/${id}/`);
@@ -42,42 +43,54 @@ const Comment = (props) => {
   };
 
   return (
-<div>
-  <hr />
-  <Media className="d-flex align-items-center">
-    <Link to={`/profiles/${profile_id}`} className={styles.AvatarHover}>
-      <Avatar src={profile_image} height={30} />
-    </Link>
-    <Media.Body className="ml-2">
-      <span className={styles.Owner}>{owner}</span>
-      <span className={styles.Date}>{updated_at}</span>
-      {showEditForm ? (
-        <CommentEditForm
-          id={id}
-          profile_id={profile_id}
-          content={content}
-          profileImage={profile_image}
-          setComments={setComments}
-          setShowEditForm={setShowEditForm}
-        />
-      ) : (
-        <>
-          {is_owner ? (
+    <div>
+      <hr />
+
+      {/* Media component for comment display */}
+      <Media className="d-flex align-items-center">
+        <Link to={`/profiles/${profile_id}`} className={styles.AvatarHover}>
+          <Avatar src={profile_image} height={30} />
+        </Link>
+
+        {/* Media body for comment content */}
+        <Media.Body className="ml-2">
+          <span className={styles.Owner}>{owner}</span>
+          <span className={styles.Date}>{updated_at}</span>
+
+          {/* Render comment edit form if in edit mode */}
+          {showEditForm ? (
+            <CommentEditForm
+              id={id}
+              profile_id={profile_id}
+              content={content}
+              profileImage={profile_image}
+              setComments={setComments}
+              setShowEditForm={setShowEditForm}
+            />
+          ) : (
             <>
-              <span onClick={handleDelete} className={styles.editDelete}>
-                <i className="fa-solid fa-xmark"></i>
-              </span>
-              <span onClick={() => setShowEditForm(true)} className={styles.editDelete}>
-                <i className="fa-solid fa-ellipsis"></i>
-              </span>
+              {/* Render edit and delete icons for comment owner */}
+              {is_owner ? (
+                <>
+                  <span onClick={handleDelete} className={styles.editDelete}>
+                    <i className="fa-solid fa-xmark"></i>
+                  </span>
+                  <span
+                    onClick={() => setShowEditForm(true)}
+                    className={styles.editDelete}
+                  >
+                    <i className="fa-solid fa-ellipsis"></i>
+                  </span>
+                </>
+              ) : null}
+
+              {/* Display the comment content */}
+              <p>{content}</p>
             </>
-          ) : null}
-          <p>{content}</p>
-        </>
-      )}
-    </Media.Body>
-  </Media>
-</div>
+          )}
+        </Media.Body>
+      </Media>
+    </div>
   );
 };
 

@@ -27,6 +27,7 @@ const UserPasswordForm = () => {
 
   const [errors, setErrors] = useState({});
 
+  // Handle changes in the form input fields
   const handleChange = (event) => {
     setUserData({
       ...userData,
@@ -41,6 +42,7 @@ const UserPasswordForm = () => {
     }
   }, [currentUser, history, id]);
 
+  // Handle form submission
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
@@ -56,6 +58,7 @@ const UserPasswordForm = () => {
     <Row>
       <Col className="py-2 mx-auto text-center" md={6}>
         <Container className={appStyles.Content}>
+          {/* Form for changing the user's password */}
           <Form onSubmit={handleSubmit}>
             <Form.Group>
               <Form.Label>New password</Form.Label>

@@ -4,6 +4,7 @@ import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import { ButtonGroup } from 'react-bootstrap';
 
+// Component for rendering three dots icon with click handler
 const ThreeDots = ({ onClick }) => (
   <i
     className="fa-solid fa-ellipsis"
@@ -14,6 +15,7 @@ const ThreeDots = ({ onClick }) => (
   />
 );
 
+// Component for a modal with more options (Edit, Delete, Close)
 export const MoreModal = ({ handleEdit, handleDelete }) => {
   const [smShow, setShow] = useState(false);
 
@@ -56,6 +58,7 @@ export const MoreModal = ({ handleEdit, handleDelete }) => {
   );
 };
 
+// Component for a modal with profile editing options
 export const ProfileEditDropdown = ({ id }) => {
   const history = useHistory();
   const [show, setShow] = useState(false);
