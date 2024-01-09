@@ -11,25 +11,25 @@ const ShareModal = ({ isOpen, onClose, shareUrl, title }) => {
         <div className="text-center">
           <div>
             <FacebookShareButton url={shareUrl} quote={title}>
-              <div className={styles.share-button}>
-                <i className="fa-brands fa-facebook-f"></i>
+              <div className={styles.ShareButtonDiv}>
+                <i className="fa-brands fa-facebook-f" />
               </div>
             </FacebookShareButton>
 
             <TwitterShareButton url={shareUrl} title={title}>
-              <div className={styles.share-button}>
-                <i className="fa-brands fa-x-twitter"></i>
+              <div className={styles.ShareButtonDiv}>
+                <i className="fa-brands fa-x-twitter" />
               </div>
             </TwitterShareButton>
 
             <WhatsappShareButton url={shareUrl} title={title}>
-              <div className={styles.share-button}>
-                <i className="fa-brands fa-whatsapp"></i>
+              <div className={styles.ShareButtonDiv}>
+                <i className="fa-brands fa-whatsapp" />
               </div>
             </WhatsappShareButton>
 
             <Button variant="dark" onClick={onClose}>
-              <i className="fa-solid fa-xmark"></i>
+              <i className="fa-solid fa-xmark" />
             </Button>
           </div>
         </div>

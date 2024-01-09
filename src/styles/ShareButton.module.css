@@ -1,4 +1,4 @@
-.share-button {
+.ShareButtonDiv {
     display: inline-block;
     padding: 6px 12px;
     margin-right: 5px; /* Adjust as needed for spacing between buttons */
@@ -15,7 +15,7 @@
     cursor: pointer;
   }
   
-  .share-button:hover {
+  .ShareButtonDiv:hover {
     background-color: #23272b; /* Bootstrap darker variant background color on hover */
     border-color: #1d2124; /* Matching darker border color on hover */
   }
