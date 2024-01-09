@@ -1,0 +1,21 @@
+.share-button {
+    display: inline-block;
+    padding: 6px 12px;
+    margin-right: 5px; /* Adjust as needed for spacing between buttons */
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 1.5;
+    color: #fff; /* Text color */
+    text-align: center;
+    text-decoration: none;
+    white-space: nowrap;
+    background-color: #343a40; /* Bootstrap dark variant background color */
+    border: 1px solid #343a40; /* Matching border color */
+    border-radius: 0.2rem;
+    cursor: pointer;
+  }
+  
+  .share-button:hover {
+    background-color: #23272b; /* Bootstrap darker variant background color on hover */
+    border-color: #1d2124; /* Matching darker border color on hover */
+  }
