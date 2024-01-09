@@ -1,5 +1,6 @@
 import React from 'react';
-import { Modal, Button } from 'react-bootstrap';
+import Modal from 'react-bootstrap/Modal';
+import Button from 'react-bootstrap/Button';
 import { FacebookShareButton, TwitterShareButton, WhatsappShareButton } from 'react-share';
 import styles from '../styles/ShareButton.module.css'
 

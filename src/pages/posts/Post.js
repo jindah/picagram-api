@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
 import styles from "../../styles/Post.module.css";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
-import { Card, OverlayTrigger, Tooltip } from "react-bootstrap";
+
+import Card from 'react-bootstrap/Card';
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import Tooltip from 'react-bootstrap/Tooltip';
+
 import { Link, useHistory, useLocation } from "react-router-dom";
 import Avatar from "../../components/Avatar";
 import { axiosRes } from "../../api/axiosDefaults";
 import { MoreModal } from "../../components/MoreModal";
-import ShareModal from "../../components/ShareButton";
+import ShareModal from "../../components/ShareModal";
 
 const Post = (props) => {
   const {

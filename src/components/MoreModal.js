@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
-import { ButtonGroup } from 'react-bootstrap';
+import ButtonGroup from 'react-bootstrap/ButtonGroup';
 
 // Component for rendering three dots icon with click handler
 const ThreeDots = ({ onClick }) => (
